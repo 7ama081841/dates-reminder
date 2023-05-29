@@ -1,25 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import { Container } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "./index.css";
+import DatesCount from "./components/DatesCount";
+import DatesList from "./components/DatesList";
+import Butoons from "./components/Butoons";
+import data from "./data" 
+
+import React , {useEffect, useState} from "react"
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+    const [ state , setState ] = useState([])
+
+    const handleDelete = () => {
+        setState([])
+    }
+
+    const handleShow = () => {
+        setState(data);
+    }
+  
+
+    return (
+        <div className="font color-body">
+            <Container className="py-5">
+                {/* head */}
+                <DatesCount data={state} m={"dj"} f={"dssdf"} />
+                {/* body */}
+                <DatesList data={state} />
+                {/* buttons */}
+                <Butoons detete={handleDelete} sow={handleShow} />
+            </Container>
+        </div>
+    );
 }
 
 export default App;
